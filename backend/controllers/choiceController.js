@@ -8,8 +8,6 @@ export async function choiceclick(req, res) {
     const choiceClickId = req.params.id; 
     const userId = req.id;  
     try {
-        console.log("function called");
-        console.log(choiceClickId);
 
         // Find the clicked choice
         const choice = await choiceModel.findById(choiceClickId);
