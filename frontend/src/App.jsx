@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import { RouterProvider,createBrowserRouter } from 'react-router-dom'
 import './App.css'
-import Navbar from './components/navbar'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import MainLayout from './components/MainLayout'
@@ -13,12 +10,9 @@ import FoundPoll from './components/FoundPoll'
 import { Toaster } from 'sonner'
 import IsAuthenticate from './components/IsAuthenticate'
 import Homeanim from './components/Homeanim'
-import io from 'socket.io-client';
-import { getSocket } from './socket'
 import { SocketProvider } from './Hooks/SocketContext'
 
 function App() {
-  const [count, setCount] = useState(0) 
   
 
 
