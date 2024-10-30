@@ -9,7 +9,6 @@ const GetPolldetails = () => {
     const dispatch=useDispatch();
     const {user}=useSelector(state=>state);
     const {id}=useParams();
-    console.log(id);
     useEffect(() => {
       const getdetails=async()=>{
         try {

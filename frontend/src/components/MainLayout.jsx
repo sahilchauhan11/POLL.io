@@ -22,12 +22,12 @@ const MainLayout = () => {
    
      
       socket.on("connect", () => {
-        console.log("Socket connected with id:", socket.id);
+        
    
       });
   
       socket.on("disconnect", () => {
-        console.log("Socket disconnected");
+     
       
       });
   

@@ -52,7 +52,6 @@ const Navbar = () => {
       const response = await axios.get(`http://localhost:3000/user/logout`,{
         withCredentials:true
       });
-      console.log(response);
       if(response.data.success){
       
         dispatch(setQuestion(null));  

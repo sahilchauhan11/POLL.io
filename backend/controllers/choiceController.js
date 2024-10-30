@@ -67,7 +67,7 @@ await poll.save()
         io.emit("pollUpdated", poll);
         return res.status(200).json({ success: true, message: "Choice updated successfully", poll });
     } catch (error) {
-        console.error(error);
+       
         return res.status(500).json({ success: false, message: "Server error" });
     }
 }

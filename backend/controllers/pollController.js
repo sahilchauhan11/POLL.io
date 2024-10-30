@@ -14,11 +14,10 @@ export const createPoll = async (req, res) => {
         await Promise.all(options.map(async (element) => {
             if(element){
             const option = await choiceModel.create({ choice: element, pollid: poll._id });
-            poll.options.push(option._id);
-            console.log(option)}
+            poll.options.push(option._id);}
         }));
         await poll.save();
-        return res.status(200).json({ success: true, message: "poll created",poll })
+        return res.status(200).json({ success: true, message: "poll created share poll id "+poll._id,poll })
     } catch (err) {
         
         return res.status(500).json({ success: false, message: err.message })

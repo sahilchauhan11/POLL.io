@@ -54,9 +54,8 @@ const CreatePoll = () => {
                 dispatch(setOptions(response.data.options));
                 dispatch(setOptions(response.data.userChoice));
                 toast.success(response.data.message)
-               
             }else{
-                toast.success(response.data.message)
+                toast.warning(response.data.message)
             }
 
 

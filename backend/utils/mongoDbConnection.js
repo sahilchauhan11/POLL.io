@@ -5,8 +5,8 @@ export default async function connection() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
           });
-         console.log('MongoDB connected');
+        
     } catch (error) {
-        console.log('MongoDB connection failed:', error.message);
+        process.exit(1);
     }
 }

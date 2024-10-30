@@ -7,6 +7,8 @@ import { setOptions, setQuestion, setuserChoice } from '../redux/pollSlice.js'
 import io from 'socket.io-client';
 import { useSocket } from '../Hooks/SocketContext.jsx'
 import GetPolldetails from '../Hooks/GetPolldetails.jsx'
+import { toast } from 'sonner'
+import { response } from 'express'
 
 
 const Poll = () => {
@@ -17,19 +19,16 @@ const Poll = () => {
   const { choicesId } = useSelector(state => state.user); 
     // 6717b73e587b0c26005c2ed3
     useEffect(() => {
-      console.log("working")
       socket.on("pollUpdated",(data)=>{ 
         dispatch(setQuestion(data.question))
         dispatch(setOptions(data.options));
         dispatch(setuserChoice(data.userChoice));
-        console.log(poll.options)
       })
       return () => {
         dispatch(setOptions([]));
         dispatch(setQuestion(""));
         dispatch(setuserChoice([]));
         dispatch(setuserChoiceId(""));
-        console.log("Poll state has been reset.");
       };
     }, [dispatch,socket]);
   const handleChoiceClick = async (choiceId) => {
@@ -42,18 +41,16 @@ const Poll = () => {
         withCredentials:true
       });
       let {poll}=response.data;
-      console.log(poll)
       if (response.data.success) {
-        console.log(choicesId)
         dispatch(setuserChoiceId(choiceId)); 
         dispatch(setQuestion(poll.question))
         dispatch(setOptions(poll.options));
         dispatch(setuserChoice(poll.userChoice));
         // Emitting the choice to the server
-        
+        toast.success(response.data.message)
       }
     } catch (error) {
-      console.error("Error updating choice:", error);
+      toast.error(error.message)
     }
   };
   if (!poll.question) {
