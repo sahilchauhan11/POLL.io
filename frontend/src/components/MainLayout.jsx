@@ -3,14 +3,12 @@ import Navbar from './navbar'
 import { Outlet, useNavigate } from 'react-router-dom'
 import Footer from './Footer'
 
-import { getSocket } from '../socket.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSocket } from '../Hooks/SocketContext.jsx'
 const MainLayout = () => {
   const navigate = useNavigate();
   const socket = useSocket();
   const { userInfo } = useSelector((state) => state.user);
-
   useEffect(() => {
     // Redirect to login if not authenticated
     if (!userInfo) {
@@ -18,7 +16,9 @@ const MainLayout = () => {
       return;
     }
   
-  
+    if (socket && !socket.connected) {
+      socket.connect();
+    }
    
      
       socket.on("connect", () => {
@@ -37,8 +37,7 @@ const MainLayout = () => {
         socket.off("disconnect"); // Clean up the event listener
       };
     }
-  , [userInfo, navigate, socket]);
-  
+  ,  [userInfo, socket, navigate]);
 
   return (
     <div>

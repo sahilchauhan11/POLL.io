@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setuserChoiceId } from '../redux/userSlice.js'
 import axios from 'axios'
 import { setOptions, setQuestion, setuserChoice } from '../redux/pollSlice.js'
-import GetPolldetails from '../Hooks/getPolldetails.jsx'
 import io from 'socket.io-client';
 import { useSocket } from '../Hooks/SocketContext.jsx'
+import GetPolldetails from '../Hooks/GetPolldetails.jsx'
 
 
 const Poll = () => {
