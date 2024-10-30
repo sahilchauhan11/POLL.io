@@ -1,7 +1,7 @@
 import express, { urlencoded } from "express";
 import mongoDbconnection from "./utils/mongoDbConnection.js"
 import cors from 'cors';
-import http from "http" ;
+import http from 'http';
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.routes.js";
 import pollRoutes from "./routes/poll.routes.js";
